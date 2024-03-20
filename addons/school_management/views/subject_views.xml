@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Action -->
+        <record id="action_subject_information" model="ir.actions.act_window">
+            <field name="name">Subject Information Action</field>
+            <field name="res_model">subject.information</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new subject for more!
+                </p>
+            </field>
+        </record>
+        <menuitem id="subject_menu"
+                  name="Subject Information"
+                  action="action_subject_information"
+                  parent="school_management.student_information_menu"
+                  sequence="10"/>
+        <record id="subject_information_list_view" model="ir.ui.view">
+            <field name="name">Subject Information List</field>
+            <field name="model">subject.information</field>
+            <field name="arch" type="xml">
+                <tree string="Danh sách môn học">
+                    <field name="name" optional="show"/>
+                    <field name="author" optional="show"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

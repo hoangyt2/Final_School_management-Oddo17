@@ -16,9 +16,11 @@
             <field name="model">student.information</field>
             <field name="arch" type="xml">
                 <tree string="Danh sách học sinh ">
+                    <field name="school_id" optional="show"/>
                     <field name="class_id" optional="show"/>
                     <field name="name" optional="show"/>
                     <field name="birthday" optional="show"/>
+                    <field name="tuition" optional="show"/>
                 </tree>
             </field>
         </record>
@@ -30,6 +32,8 @@
                 <form>
                     <sheet>
                         <group>
+<!--                            domain="[('hasOnlineClass','=', True)]"-->
+                            <field name="school_id" />
                             <field name="class_id"/>
                             <field name="name"/>
                             <field name="birthday"/>
@@ -37,16 +41,19 @@
                         <group>
                             <field name="subject_list" widget="many2many_tags" string="Các môn học đăng ký"
                                    help="Đây là danh sách các môn học của học sinh">
-
-                                <!--                                <tree>-->
-                                <!--                                    <field name="name"></field>-->
-                                <!--                                    <field name="author"></field>-->
-                                <!--                                </tree>-->
-                                <!--                                <form>-->
-                                <!--                                    <field name="name" string="Tên môn học"></field>-->
-                                <!--                                    <field name="author" string="Tác giả"></field>-->
-                                <!--                                </form>-->
+                                <tree>
+                                    <field name="name"></field>
+                                    <field name="author"></field>
+                                </tree>
+                                <form>
+                                    <field name="name" string="Tên môn học"></field>
+                                    <field name="author" string="Tác giả"></field>
+                                </form>
                             </field>
+                        </group>
+                        <group>
+                            <field name="tuition" optional="show"/>
+                            <field name="currency_id" optional="show"/>
                         </group>
                     </sheet>
                 </form>

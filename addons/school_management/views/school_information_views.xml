@@ -19,7 +19,7 @@
                     <field name="type" optional="show"/>
                     <field name="email" optional="show"/>
                     <field name="address" optional="show"/>
-                    <!--                    <field name="tuition" optional="show"/>-->
+                    <field name="tuition" optional="show"/>
                     <field name="hasOnlineClass" optional="show"/>
                     <field name="class_list" optional="show"/>
                 </tree>
@@ -35,6 +35,7 @@
                         <group>
                             <field name="name"/>
                             <field name="type"/>
+                            <field name="auto_rank"/>
                             <field name="email"/>
                             <field name="address"/>
                         </group>
@@ -42,7 +43,7 @@
                             <field name="hasOnlineClass"/>
                             <field name="document" filename="document_name"/>
                             <field name="document_name" invisible="1"/>
-                            <!--                            <field name="tuition" optional="show"/>-->
+                            <field name="tuition" optional="show"/>
                         </group>
                         <group>
                             <field name="class_list" optional="show" editable="bottom">

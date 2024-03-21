@@ -18,6 +18,24 @@ class SchoolInformation(models.Model):
     establishDay = fields.Date(string=("Ngày thành lập"))
     document = fields.Binary(string=("Tài liệu về trường"))
     document_name = fields.Char(string=("Tên tài liệu"))
-    # tuition = fields.Char(string="Học phí")
+    auto_rank = fields.Integer(compute="_compute_auto_rank", string="Auto Rank")
 
     class_list = fields.One2many("class.information", "school_id", string=("Danh sách lớp học"))
+    tuition = fields.Float(compute="_auto_compute_tuition", string="Học phí 1 kỳ", required=True)
+    @api.depends("type")
+    def _auto_compute_tuition(self):
+        for rc in self:
+            if rc.type == "private":
+                rc.tuition = "2000"
+            else :
+                rc.tuition = "1000"
+
+    @api.depends("type")
+    def _compute_auto_rank(self):
+        for rc in self:
+            if rc.type == "private":
+                rc.auto_rank = 50
+            elif rc.type == "public":
+                rc.auto_rank = 100
+            else:
+                rc.auto_rank = 0
